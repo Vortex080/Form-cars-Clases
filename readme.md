@@ -1,5 +1,8 @@
 # LOGIN
 
+> [!WARNING]
+> Este repositorio esta parseado para posteriormente poder añadirle una base de datos
+
 ## FORMULARIO
 
 - Verificación de contraseñas con login
@@ -34,3 +37,4 @@
 > Usuarios de testing
 > - Nombre: antonio Apellidos: escuchas Correo: antonio@gmail.com Contraseña: 1234
 > - Nombre: fisio Apellidos: fisio Correo: fisio@gmail.com Contraeña: 1234
+
