@@ -19,7 +19,12 @@
 - "Ver mi carrito"
 - "Log out"
 
+```
+<?php
 
+function hola();
+
+```
 ## LISTADO DE COCHES
 
 - Derecha de cada coche "comprar"
