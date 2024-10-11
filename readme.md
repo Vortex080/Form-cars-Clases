@@ -18,8 +18,8 @@
 - Redirección de marca a los coches respectivos de la misma
 - "Ver mi carrito"
 - "Log out"
-
-## LISTADO DE COCHES
+  
+## LISTADO DE **COCHES**
 
 - Derecha de cada coche "comprar"
 
@@ -31,6 +31,7 @@
 
 - Eliminar coche (a la derecha de cada coche)
 - Volver (Redirección dependiendo a la pagina respectiva)
+- https://www.google.com
 
 > [!IMPORTANT]
 > Usuarios de testing
