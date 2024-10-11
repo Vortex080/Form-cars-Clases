@@ -32,7 +32,7 @@
 - Eliminar coche (a la derecha de cada coche)
 - Volver (Redirección dependiendo a la pagina respectiva)
 
-[alt text](https://cdn.discordapp.com/attachments/1137333484919193653/1294218037834027048/code-snapshot5.png?ex=670a35f9&is=6708e479&hm=b1e74239aa9c5522eb35ca793871bdc7dc1959988ba73cc47fc70a3ff79fe2d2&)
+https://cdn.discordapp.com/attachments/1137333484919193653/1294218037834027048/code-snapshot5.png?ex=670a35f9&is=6708e479&hm=b1e74239aa9c5522eb35ca793871bdc7dc1959988ba73cc47fc70a3ff79fe2d2&
 
 > [!IMPORTANT]
 > Usuarios de testing
