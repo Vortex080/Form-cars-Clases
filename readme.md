@@ -8,31 +8,31 @@
 - Verificación de contraseñas con login
 - Encriptación de contraseñas
 - Guardado de usuarios en documento .csv
-- Creación de sessión
+- Creación de sesión
 
 ## LISTADO DE MARCAS DE COCHES
 
-> [!NOTE]
-> La creacción del proyecto se trabajara con clases
-
 - Redirección de marca a los coches respectivos de la misma
-- "Ver mi carrito"
-- "Log out"
+- Botón "ver mi carrito"
+- Botón "log out"
   
-## LISTADO DE **COCHES**
+## LISTADO DE COCHES
 
-- Derecha de cada coche "comprar"
-
-- debajo del listado volver (a las marcas)
-
-- "Ver mi carrito"
+- Listado de coches a traves de archivos .txt
+- Botón a la derecha de cada coche "comprar"
+- Botón para volver a la pagina anterior (marcas)
+- Botón para ir al "carrito"
 
 ## CARRITO
 
-- Eliminar coche (a la derecha de cada coche)
-- Volver (Redirección dependiendo a la pagina respectiva)
+- Botón para eliminar el coche del carrito (uno por cada)
+- Botón volver (Redirección dependiendo a la pagina respectiva)ç
+  
+> [!NOTE]
+> La creacción del proyecto se trabajara con clases
 
 ## IMPLEMENTACIÓN DE OBJETOS
+
 - Clase printer (añade funciones para no utilizar echo)
 - Clase connection (conector de la base de datos hasta el momento parseada y uso con archivos de texto)
 - Clases de repositorios con el uso de interface CRUD
