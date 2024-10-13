@@ -32,6 +32,12 @@
 - Eliminar coche (a la derecha de cada coche)
 - Volver (Redirección dependiendo a la pagina respectiva)
 
+## IMPLEMENTACIÓN DE OBJETOS
+- Clase printer (añade funciones para no utilizar echo)
+- Clase connection (conector de la base de datos hasta el momento parseada y uso con archivos de texto)
+- Clases de repositorios con el uso de interface CRUD
+- Clases de los diferentes modelos de uso
+
 > [!IMPORTANT]
 > Usuarios de testing
 > - Nombre: antonio Apellidos: escuchas Correo: antonio@gmail.com Contraseña: 1234
