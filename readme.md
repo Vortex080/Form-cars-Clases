@@ -32,10 +32,13 @@
 - Eliminar coche (a la derecha de cada coche)
 - Volver (Redirección dependiendo a la pagina respectiva)
 
-![alt text](https://cdn.discordapp.com/attachments/1137333484919193653/1294218037834027048/code-snapshot5.png?ex=670a35f9&is=6708e479&hm=b1e74239aa9c5522eb35ca793871bdc7dc1959988ba73cc47fc70a3ff79fe2d2&)
-
 > [!IMPORTANT]
 > Usuarios de testing
 > - Nombre: antonio Apellidos: escuchas Correo: antonio@gmail.com Contraseña: 1234
 > - Nombre: fisio Apellidos: fisio Correo: fisio@gmail.com Contraeña: 1234
+
+## ESTRUCTURA DE ARCHIVOS
+![alt text](https://cdn.discordapp.com/attachments/1137333484919193653/1294979356795469949/image.png?ex=670cfb02&is=670ba982&hm=b18ef11f7c928a7ec2fed568d38a9d7029af7b99c38ac4bf8491bc38439f1382&)
+
+
 
