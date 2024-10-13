@@ -2,6 +2,12 @@
 
 include_once 'CRUDRep.php';
 
+/**
+ * Car repository class
+ * @class
+ * @name Carrep
+ * @implements ICRUD
+ */
 class Carrep implements ICRUD
 {
 

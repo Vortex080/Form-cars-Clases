@@ -1,16 +1,39 @@
 <?php
 
-    interface ICRUD {
+/**
+ * Interface for create, read, update and delete
+ * @interface
+ * @name ICRUD
+ */
+interface ICRUD
+{
 
-        function getbyId($id);
+    /**
+     * Search by Id
+     * @var $id
+     */
+    function getbyId($id);
 
-        function getAll();
+    /**
+     * Return an array with all
+     */
+    function getAll();
 
-        function create($obj);
+    /**
+     * Add the obj to an array
+     * @var $obj
+     */
+    function create($obj);
 
-        function delete($obj);
+    /**
+     * Find the obj and delete from the array
+     * @var $obj
+     */
+    function delete($obj);
 
-        function update($obj);
-    }
-
-?>
+    /**
+     * Find the obj and replace the fields
+     * @var $obj
+     */
+    function update($obj);
+}
