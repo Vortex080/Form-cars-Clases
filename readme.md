@@ -1,4 +1,9 @@
-# LOGIN
+![Badge en Desarollo](https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green)
+
+# IMPLEMENTACIÓN DE OBJETOS
+
+En este proyecto se trabajara con proyectos en PHP. La finalidad del mismo 
+es el desarrollo de una "tienda de objetos" junto a un formulario de inicio de sesión.
 
 > [!WARNING]
 > Este repositorio esta parseado para posteriormente poder añadirle una base de datos
