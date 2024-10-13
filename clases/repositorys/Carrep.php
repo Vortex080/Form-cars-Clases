@@ -7,7 +7,7 @@ include_once 'CRUDRep.php';
  * @class
  * @name Carrep
  * @implements ICRUD
- */
+*/
 class Carrep implements ICRUD
 {
 
@@ -17,7 +17,7 @@ class Carrep implements ICRUD
     /**
      * Saca por id del array
      * @var $id
-     */
+    */
     public function getbyId($id)
     {
 

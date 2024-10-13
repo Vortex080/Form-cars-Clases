@@ -1,13 +1,10 @@
 <?php
 
-
-
 /**
  * Clase connection parseada para el uso de archivos txt
  * @class
  * @name Connection
- */
-
+*/
 
 /**
  * Verificación del archivo si existe

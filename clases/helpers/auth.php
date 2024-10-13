@@ -42,7 +42,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $html = 'marcas.php';
                 // Redirección al html
                 header("Location:http://$host$ruta/$html?name=$name");
-                $_SESSION["$name"];
                 logIn($name);
                 if (!isset($_SESSION[$name])){
                     $_SESSION[$name] = [];

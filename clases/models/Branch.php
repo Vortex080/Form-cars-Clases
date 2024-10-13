@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Branch class
  * @class
