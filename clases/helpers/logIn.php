@@ -52,5 +52,11 @@ function statusLogIn()
 function escribirSession($user, $valor)
 {
     iniciaSession();
-    $_SESSION[$valor] = $user;
+    $_SESSION[$user] = $valor;
+}
+
+
+function leerSession($name)
+{
+    return $_SESSION[$name];
 }

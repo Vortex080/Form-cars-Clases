@@ -37,14 +37,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 // Variable guarda el host
                 $host = $_SERVER['HTTP_HOST'];
                 // Ruta del servidor
-                $ruta = '/servidor/ejercicios/Form-cars-Clases/clases/vista/';
+                $ruta = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
                 // Archivo de la ruta
                 $html = 'marcas.php';
                 // Redirección al html
-                header("Location:http://$host$ruta/$html?name=$name");
+                header("Location:../vista/marcas.php?name=".$name);
                 logIn($name);
-                if (!isset($_SESSION[$name])){
-                    $_SESSION[$name] = [];
+                if (!isset($_SESSION['carrito'])){
+                    $_SESSION['carrito'] = [];
                 }
             }
         } else {

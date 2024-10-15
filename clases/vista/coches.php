@@ -21,13 +21,20 @@ $marcas = formatArchive($contenido);
 // Escribe el titulo de la marca
 title($marcasArch);
 
-$_SESSION[$name];
 
 foreach ($marcas as $marcas => $url) {
     echo '<form action="coches.php?name=' . $name . '&marca=' . $marcasArch . '&coche=' . $url . '" method="POST">
     <input name="coche" value="' . $url . '"disabled>    <button type="submit" id="">AÑADIR AL CARRITO</button><BR></BR>
     </form>';
 }
+
+$arraycoches = array();
+$arraycoches = $_SESSION['carrito'];
+
+if (isset($_GET['coche'])) {
+    array_push($arraycoches, $_GET['coche']);
+}
+$_SESSION['carrito'] = $arraycoches;
 
 // Añade el botón VER CARRITO
 buttonPHP('VER CARRITO', 'carrito.php?name=' . $name . '&marca=' . $marcasArch, 'POST');

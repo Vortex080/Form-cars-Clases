@@ -21,7 +21,7 @@ if (isset($_GET['marca'])) {
 }
 
 // Recoge los modelos de la sesión
-$modelos = $_SESSION[$name];
+$modelos = $_SESSION['carrito'];
 
 // Verifica si la variable quitar estar llena
 if (!empty($quitar)) {
