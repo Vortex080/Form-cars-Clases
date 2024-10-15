@@ -5,7 +5,7 @@
  * @class
  * @name Branch
  */
-class Branch
+class Brand
 {
     // ID
     public $id;

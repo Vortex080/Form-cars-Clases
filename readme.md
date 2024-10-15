@@ -5,8 +5,8 @@
 En este proyecto se trabajara con proyectos en PHP. La finalidad del mismo 
 es el desarrollo de una "tienda de objetos" junto a un formulario de inicio de sesión.
 
-> [!WARNING]
-> Este repositorio esta parseado para posteriormente poder añadirle una base de datos
+> [!NOTE]
+> Este repositorio tiene implementado base de datos
 
 ## FORMULARIO
 
@@ -42,6 +42,12 @@ es el desarrollo de una "tienda de objetos" junto a un formulario de inicio de s
 - Clase connection (conector de la base de datos hasta el momento parseada y uso con archivos de texto)
 - Clases de repositorios con el uso de interface CRUD
 - Clases de los diferentes modelos de uso
+
+## IMPLEMENTACIÓN DE BASE DE DATOS
+
+- Funcionamiento total de la base de datos
+- Conexion a la base de datos
+- 
 
 > [!IMPORTANT]
 > Usuarios de testing

@@ -1,7 +1,9 @@
 <?php
 
-include_once '../helpers/logIn.php';
-include_once '../helpers/printer.php';
+$dr = $_SERVER['DOCUMENT_ROOT'];
+
+include_once $dr . '/clases/helpers/logIn.php';
+include_once $dr . '/clases/helpers/printer.php';
 
 iniciaSession();
 
@@ -29,14 +31,19 @@ if (!empty($quitar)) {
     $i = array_search($quitar, $modelos);
     // Elimina los modelos del indice
     unset($modelos[$i]);
+    $_SESSION['carrito'] = $modelos;
 }
 
 foreach ($modelos as $model) {
     // Verifica si la marca existe para redireccionar hacia una pagina u otra
     if (isset($_GET['marca'])) {
-        echo $model . '<form action="carrito.php?name=' . $name . '&marca=' . $marca . '&coche=' . $model . '" method="POST"><button type="submit">BORRAR</button></form><BR></BR> ';
+        if (isset($model) != '') {
+            echo $model . '<form action="carrito.php?name=' . $name . '&marca=' . $marca . '&coche=' . $model . '" method="POST"><button type="submit">BORRAR</button></form><BR></BR> ';
+        }
     } else {
-        echo $model . '<form action="carrito.php?name=' . $name . '&coche=' . $model . '" method="POST"><button type="submit">BORRAR</button></form><BR></BR> ';
+        if (isset($mode) != '') {
+            echo $model . '<form action="carrito.php?name=' . $name . '&coche=' . $model . '" method="POST"><button type="submit">BORRAR</button></form><BR></BR> ';
+        }
     }
 }
 

@@ -1,8 +1,11 @@
 <?php
 
-include_once '../helpers/logIn.php';
-include_once '../helpers/Connection.php';
-include_once '../helpers/printer.php';
+$dr = $_SERVER['DOCUMENT_ROOT'];
+
+include_once $dr . '/clases/helpers/logIn.php';
+include_once $dr . '/clases/helpers/Connection.php';
+include_once $dr . '/clases/helpers/printer.php';
+include_once $dr . '/clases/repositorys/Carrep.php';
 
 iniciaSession();
 
@@ -10,21 +13,17 @@ iniciaSession();
 $name = $_GET['name'];
 
 // Recoge la marca del header
-$marcasArch = $_GET['marca'];
+$marca = $_GET['marca'];
 
-// Lee el archivo junto a su direccón de ruta
-$contenido = readArchive('../BD/' . $marcasArch . '.txt');
-
-// Formatea el contenido del archivo
-$marcas = formatArchive($contenido);
+$contenido = Carrep::findbyBrand($marca);
 
 // Escribe el titulo de la marca
-title($marcasArch);
+title($marca);
 
 
-foreach ($marcas as $marcas => $url) {
-    echo '<form action="coches.php?name=' . $name . '&marca=' . $marcasArch . '&coche=' . $url . '" method="POST">
-    <input name="coche" value="' . $url . '"disabled>    <button type="submit" id="">AÑADIR AL CARRITO</button><BR></BR>
+foreach ($contenido as $element) {
+    echo '<form action="coches.php?name=' . $name . '&marca=' . $marca . '&coche=' . $element->name . '" method="POST">
+    <input name="coche" value="' . $element->name . '"disabled>    <button type="submit" id="">AÑADIR AL CARRITO</button><BR></BR>
     </form>';
 }
 
@@ -37,7 +36,7 @@ if (isset($_GET['coche'])) {
 $_SESSION['carrito'] = $arraycoches;
 
 // Añade el botón VER CARRITO
-buttonPHP('VER CARRITO', 'carrito.php?name=' . $name . '&marca=' . $marcasArch, 'POST');
+buttonPHP('VER CARRITO', 'carrito.php?name=' . $name . '&marca=' . $marca, 'POST');
 
 // Establece la ruta de vuelta
 $ruta = 'marcas.php?name=' . $name;

@@ -1,6 +1,7 @@
 <?php
+$dr = $_SERVER['DOCUMENT_ROOT'];
 
-include_once 'logIn.php';
+include_once $dr . '/clases/helpers/logIn.php';
 
 $host = $_SERVER['HTTP_HOST'];
 // Ruta del servidor

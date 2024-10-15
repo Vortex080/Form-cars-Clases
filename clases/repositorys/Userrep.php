@@ -1,64 +1,83 @@
 <?php
 
-include_once 'CRUDRep.php';
+$dr = $_SERVER['DOCUMENT_ROOT'];
+
+include_once $dr . '/clases/models/User.php';
+include_once $dr . '/clases/helpers/Connection.php';
+include_once $dr . '/clases/repositorys/CRUDRep.php';
+
 
 class Userrep implements ICRUD
 {
-
-    // Array de Usuario
-    private static $userlist = [];
 
     /**
      * Saca por id del array
      * @var $id
      */
-    public function getbyId($id)
+    static public function getbyId($id)
     {
+        $con = Connection::getConection();
+        $array = [];
+        $rest = $con->query('select nombre, correo, contraseña, apellidos from coches where id ="' . $id . '";');
+        while ($row = $rest->fetch()) {
 
-        return isset($this->userlist[$id]) ? $this->userlist[$id] : null;
+            $user = new User($row['nombre'], $row['apellidos'], $row['correo'], $row['contraseña']);
+            array_push($array, $user);
+        }
+
+        return $array;
     }
 
     /**
      * Saca el array entero
      */
-    public function getAll()
+    static public function getAll()
     {
-        return $this->userlist;
+        $con = Connection::getConection();
+        $aray = [];
+        $rest = $con->query('select nombre, apellidos, correo, contraseña from user;');
+        while ($row = $rest->fetch()) {
+
+            $user = new User($row['nombre'], $row['apellidos'], $row['correo'], $row['contraseña']);
+            array_push($aray, $user);
+        }
+
+        return $aray;
     }
 
     /**
      * Añade el Usuario al array list
      * @var $user
      */
-    public function create($user)
+    static public function create($user)
     {
-        $this->userlist[] = $user;
-        return 1;
+        $con = Connection::getConection();
+        $sql = 'insert into user(nombre, apellidos, correo, contraseña) values (?, ?, ?, ?)';
+        $stmt = $con->prepare($sql);
+        $stmt->execute([$user->name, $user->apellidos, $user->correo, $user->password]);
     }
 
     /**
      * Elimina el Usuario del array
      * @var $user
      */
-    public function delete($user)
+    static public function delete($user)
     {
-        if (isset($this->userlist[$user->id])) {
-            unset($this->userlist[array_search($user->id, $this->userlist)]);
-            return 1;
-        } else {
-            return 0;
-        }
+        $con = Connection::getConection();
+        $sql = 'delete from users where correo=?';
+        $stmt = $con->prepare($sql);
+        $stmt->execute([$user->correo]);
     }
 
     /**
      * Actualiza los campos de Usuario
      * @var $user
      */
-    public function update($user)
+    static public function update($user)
     {
-        if (isset($this->userlist[$user->id])) {
-            $this->userlist[$user->id];
-            return $this->userlist[$user->id];
-        }
+        $con = Connection::getConection();
+        $sql = 'update user set nombre=?, apellido=?, contraseña=? where correo=?';
+        $stmt = $con->prepare($sql);
+        $stmt->execute($user->correo);
     }
 }

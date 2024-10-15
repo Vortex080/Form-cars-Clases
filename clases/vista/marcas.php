@@ -1,32 +1,28 @@
 <?php
 
-include_once '../helpers/logIn.php';
-include_once '../helpers/Connection.php';
-include_once '../helpers/printer.php';
+$dr = $_SERVER['DOCUMENT_ROOT'];
+
+include_once $dr . '/clases/helpers/logIn.php';
+include_once $dr . '/clases/helpers/printer.php';
+include_once $dr . '/clases/repositorys/Brandrep.php';
 
 iniciaSession();
-
-// Dirección de las marcas
-$marcasArchive = '../BD/marcas.txt';
 
 // Recoge el nombre de la sesión
 $name = $_GET['name'];
 
 // Lee el archivo
-$contenido = readArchive($marcasArchive);
-
-// Formatea el contenido del archivo
-$marcas = formatArchive($contenido);
+$contenido = Branchrep::getAll();
 
 // Escribe el titulo de la marca
 title('MARCAS');
 
-foreach ($marcas as $marcas => $url) {
-    echo '<a href="coches.php?name=' . $name . '&marca=' . $url . '">' . $url . '</a> <br>';
+foreach ($contenido as $element) {
+    echo '<a href="coches.php?name=' . $name . '&marca=' . $element->name . '">' . $element->name . '</a> <br>';
 }
 
 // Añade el botón VER CARRITO
 buttonPHP('VER CARRITO', 'carrito.php?name=' . $name, 'POST');
 
 // Añade el botón LOGOUT
-buttonPHP('LOGOUT', '../logout.php?name=' . $name, 'POST');
+buttonPHP('LOGOUT', $dr . '/clases/helpers/logOut.php?name=' . $name, 'POST');

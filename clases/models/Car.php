@@ -1,7 +1,5 @@
 <?php
 
-include_once 'Branch.php';
-
 /**
  * Car class
  * @class
@@ -12,13 +10,14 @@ class Car
     // ID
     public $id;
     // Branch of the car
-    public Branch $branch;
-    // Model
-    public string $model;
+    public $brand;
+    // name
+    public string $name;
 
-    public function __construct(Branch $branch, $model)
+    public function __construct($id, $brand, $name)
     {
-        $this->branch = $branch;
-        $this->model = $model;
+        $this->id = $id;
+        $this->brand = $brand;
+        $this->name = $name;
     }
 }

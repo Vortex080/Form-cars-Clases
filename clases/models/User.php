@@ -7,14 +7,20 @@
  */
 class User
 {
-    // ID
-    public $id;
     // Name
     public $name;
 
-    public function __construct($id, $name)
+    public $apellido;
+
+    public $correo;
+
+    public $pass;
+
+    public function __construct($name, $apellido, $correo, $pass)
     {
-        $this->id = $id;
         $this->name = $name;
+        $this->apellido = $apellido;
+        $this->correo = $correo;
+        $this->pass = $pass;
     }
 }

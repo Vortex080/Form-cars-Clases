@@ -1,18 +1,20 @@
 <?php
 
+$dr = $_SERVER['DOCUMENT_ROOT'];
+
 include_once 'logIn.php';
-include_once 'Connection.php';
+
+include_once $dr . '/clases/repositorys/Userrep.php';
+include_once $dr . '/clases/helpers/Connection.php';
 
 iniciaSession();
 
-//Nombre archivo
-$nombreArchivo = '../BD/datos.csv';
 // Array de datos
-$datos = [];
 
-$archivo = verificationFile($nombreArchivo);
+$datos = Userrep::getAll();
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Variable nombre
     $name = $_POST['name'];
@@ -25,13 +27,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     // Encriptación de contraseña
     $password = password_hash($pass, PASSWORD_DEFAULT);
 
-    // Rellenamos el array de datos
-    while(($datos = fgetcsv($archivo)) !==false){
-        // Verificamos si el email existe
-        if(array_search($email, $datos)){
-            echo 'Usuario ya creado <br>';
-            // Verificamos si la contraseña es correcta
-            if (!password_verify($pass, $datos[3])){
+    $datos = Userrep::getAll();
+    if (array_search($email, array_column($datos, 'correo'))) {
+  
+        echo 'Usuario ya creado <br>';
+        // Verificamos si la contraseña es correcta
+        foreach ($datos as $element){
+            if (!password_verify($pass, $element->pass)) {
                 echo 'Contraseña incorrecta <br>';
             } else {
                 // Variable guarda el host
@@ -41,21 +43,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 // Archivo de la ruta
                 $html = 'marcas.php';
                 // Redirección al html
-                header("Location:../vista/marcas.php?name=".$name);
+                header("Location:../vista/marcas.php?name=" . $name);
                 logIn($name);
-                if (!isset($_SESSION['carrito'])){
+                if (!isset($_SESSION['carrito'])) {
                     $_SESSION['carrito'] = [];
                 }
             }
-        } else {
-            echo 'Usuario inexistente';
         }
+    } else {
+
+        echo 'Usuario inexistente';
     }
-
-
-
 } else {
     echo 'ERROR: Se esperaba un metodo POST y se a recibido ' . $_SERVER['REQUEST_METHOD'];
 }
 
-fclose($archivo);

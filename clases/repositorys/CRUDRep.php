@@ -12,28 +12,28 @@ interface ICRUD
      * Search by Id
      * @var $id
      */
-    function getbyId($id);
+    static function  getbyId($id);
 
     /**
      * Return an array with all
      */
-    function getAll();
+    static function getAll();
 
     /**
      * Add the obj to an array
      * @var $obj
      */
-    function create($obj);
+    static function create($obj);
 
     /**
      * Find the obj and delete from the array
      * @var $obj
      */
-    function delete($obj);
+    static function delete($obj);
 
     /**
      * Find the obj and replace the fields
      * @var $obj
      */
-    function update($obj);
+    static function update($obj);
 }

@@ -1,70 +1,100 @@
 <?php
+$dr = $_SERVER['DOCUMENT_ROOT'];
 
-include_once 'CRUDRep.php';
+include_once $dr . '/clases/repositorys/CRUDRep.php';
+include_once $dr . '/clases/models/Car.php';
 
 /**
  * Car repository class
  * @class
  * @name Carrep
  * @implements ICRUD
-*/
+ */
 class Carrep implements ICRUD
 {
-
-    // Array de coches
-    private static $carlist = [];
 
     /**
      * Saca por id del array
      * @var $id
-    */
-    public function getbyId($id)
+     */
+    static public function getbyId($id)
     {
+        $con = Connection::getConection();
+        $array = [];
+        $rest = $con->query('select id, nombre, marca from coches where id ="' . $id . '";');
+        while ($row = $rest->fetch()) {
 
-        return isset($this->carlist[$id]) ? $this->carlist[$id] : null;
+            $car = new Car($row['id'], $row['marca'], $row['nombre']);
+            array_push($array, $car);
+        }
+
+        return $array;
     }
 
     /**
      * Saca el array entero
      */
-    public function getAll()
+    static public function getAll()
     {
-        return $this->carlist;
-    }
+        $con = Connection::getConection();
+        $array = [];
+        $rest = $con->query('select id, nombre, marca from coches;');
+        while ($row = $rest->fetch()) {
 
-    /**
-     * Añade el coche al array list
-     * @var $car
-     */
-    public function create($car)
-    {
-        $this->carlist[] = $car;
-        return 1;
-    }
-
-    /**
-     * Elimina el coche del array
-     * @var $car
-     */
-    public function delete($car)
-    {
-        if (isset($this->carlist[$car->id])) {
-            unset($this->carlist[array_search($car->id, $this->carlist)]);
-            return 1;
-        } else {
-            return 0;
+            $car = new car($row['id'], $row['nombre'], $row['id']);
+            array_push($array, $car);
         }
+
+        return $array;
     }
 
     /**
-     * Actualiza los campos de coche
+     * Añade el marca al array list
      * @var $car
      */
-    public function update($car)
+    static public function create($car)
     {
-        if (isset($this->carlist[$car->id])) {
-            $this->carlist[$car->id];
-            return $this->carlist[$car->id];
+        $con = Connection::getConection();
+        $sql = 'insert into coches(id,nombre,marca) values (?, ?,?)';
+        $stmt = $con->prepare($sql);
+        $stmt->execute([$car->id, $car->name, $car->brand]);
+    }
+
+    /**
+     * Elimina el marca del array
+     * @var $car
+     */
+    static public function delete($car)
+    {
+        $con = Connection::getConection();
+        $sql = 'delete from coches where id=?';
+        $stmt = $con->prepare($sql);
+        $stmt->execute([$car->id]);
+    }
+
+    /**
+     * Actualiza los campos de marca
+     * @var $car
+     */
+    static public function update($car)
+    {
+        $con = Connection::getConection();
+        $sql = 'update coches set nombre=?, marca=? where id=?';
+        $stmt = $con->prepare($sql);
+        $stmt->execute($car->nombre, $car->brand, $car->id);
+    }
+
+    static public function findbyBrand($brand)
+    {
+        $con = Connection::getConection();
+        $array = [];
+        $rest = $con->query('select id, nombre, marca from coches where marca ="' . $brand . '";');
+        while ($row = $rest->fetch()) {
+
+            $car = new Car($row['id'], $row['marca'], $row['nombre']);
+            array_push($array, $car);
         }
+
+        return $array;
     }
 }

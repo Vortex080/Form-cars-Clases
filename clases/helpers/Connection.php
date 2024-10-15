@@ -1,30 +1,31 @@
 <?php
 
-/**
- * Clase connection parseada para el uso de archivos txt
- * @class
- * @name Connection
-*/
-
-/**
- * Verificación del archivo si existe
- * @var $name
- */
-function verificationFile($name)
+class Connection
 {
-    if (file_exists($name)) {
-        return fopen($name, 'r+');
-    } else {
-        return fopen($name, 'w');
+    // Objeto connection para conectarse a base de datos
+    public static $con = null;
+
+
+    /**
+     * Crea la conexión con la base de datos
+     * introduciendo los campos solicitados por el PDO
+     */
+    public static function getConection()
+    {
+        if (self::$con == null) {
+
+            $host = 'mysql:localhost;port=3306;dbname=cars';
+            $user = 'root';
+            $pass = '';
+            $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
+
+            try {
+                self::$con = new PDO($host, $user, $pass, $opciones);
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        return self::$con;
     }
-}
-
-function readArchive($name)
-{
-    return file_get_contents($name);
-}
-
-function formatArchive($name)
-{
-    return array_unique(array_map('trim', explode(';', $name)));
 }
