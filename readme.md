@@ -57,5 +57,9 @@ es el desarrollo de una "tienda de objetos" junto a un formulario de inicio de s
 ## ESTRUCTURA DE ARCHIVOS
 ![alt text](https://cdn.discordapp.com/attachments/1137333484919193653/1294979356795469949/image.png?ex=670cfb02&is=670ba982&hm=b18ef11f7c928a7ec2fed568d38a9d7029af7b99c38ac4bf8491bc38439f1382&)
 
+## ESTRUCTURA BASE DE DATOS
+
+![alt text](https://cdn.discordapp.com/attachments/1137333484919193653/1295833243479838830/image.png?ex=67101640&is=670ec4c0&hm=676184b645a313fe9f8e4346ee24e887bdee7ba067119d808d654557eee7da5b&)
+
 
 

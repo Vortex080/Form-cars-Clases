@@ -15,6 +15,7 @@ $name = $_GET['name'];
 // Recoge la marca del header
 $marca = $_GET['marca'];
 
+// Recoge todos los coches según la marca
 $contenido = Carrep::findbyBrand($marca);
 
 // Escribe el titulo de la marca

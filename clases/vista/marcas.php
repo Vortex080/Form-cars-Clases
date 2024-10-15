@@ -11,7 +11,7 @@ iniciaSession();
 // Recoge el nombre de la sesión
 $name = $_GET['name'];
 
-// Lee el archivo
+// Recoge todas las marcas de la BD
 $contenido = Branchrep::getAll();
 
 // Escribe el titulo de la marca
