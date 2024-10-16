@@ -23,4 +23,9 @@ class User
         $this->correo = $correo;
         $this->pass = $pass;
     }
+
+    public function __toString()
+    {
+        return $this->correo;
+    }
 }

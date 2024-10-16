@@ -47,7 +47,6 @@ es el desarrollo de una "tienda de objetos" junto a un formulario de inicio de s
 
 - Funcionamiento total de la base de datos
 - Conexion a la base de datos
-- 
 
 > [!IMPORTANT]
 > Usuarios de testing

@@ -20,15 +20,13 @@ class Carrep implements ICRUD
     static public function getbyId($id)
     {
         $con = Connection::getConection();
-        $array = [];
         $rest = $con->query('select id, nombre, marca from coches where id ="' . $id . '";');
         while ($row = $rest->fetch()) {
 
             $car = new Car($row['id'], $row['marca'], $row['nombre']);
-            array_push($array, $car);
         }
 
-        return $array;
+        return $car;
     }
 
     /**
@@ -84,17 +82,35 @@ class Carrep implements ICRUD
         $stmt->execute($car->nombre, $car->brand, $car->id);
     }
 
+    /**
+     * Busca el coche por la marca
+     * @var $brand
+     */
     static public function findbyBrand($brand)
     {
         $con = Connection::getConection();
-        $array = [];
         $rest = $con->query('select id, nombre, marca from coches where marca ="' . $brand . '";');
         while ($row = $rest->fetch()) {
 
             $car = new Car($row['id'], $row['marca'], $row['nombre']);
-            array_push($array, $car);
         }
 
-        return $array;
+        return $car;
+    }
+
+    /**
+     * Busca el coche por el nombre
+     * @var $name
+     */
+    static public function getbyName($name)
+    {
+        $con = Connection::getConection();
+        $rest = $con->query('select id, nombre, marca from coches where nombre ="' . $name . '";');
+        while ($row = $rest->fetch()) {
+
+            $car = new Car($row['id'], $row['marca'], $row['nombre']);
+        }
+
+        return $car;
     }
 }

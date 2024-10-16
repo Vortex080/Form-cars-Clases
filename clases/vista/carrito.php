@@ -2,6 +2,9 @@
 
 $dr = $_SERVER['DOCUMENT_ROOT'];
 
+include_once $dr . '/clases/models/User.php';
+include_once $dr . '/clases/repositorys/Userrep.php';
+include_once $dr . '/clases/repositorys/Carrep.php';
 include_once $dr . '/clases/helpers/logIn.php';
 include_once $dr . '/clases/helpers/printer.php';
 
@@ -41,18 +44,23 @@ foreach ($modelos as $model) {
             echo $model . '<form action="carrito.php?name=' . $name . '&marca=' . $marca . '&coche=' . $model . '" method="POST"><button type="submit">BORRAR</button></form><BR></BR> ';
         }
     } else {
-        if (isset($mode) != '') {
+        if (isset($model) != '') {
             echo $model . '<form action="carrito.php?name=' . $name . '&coche=' . $model . '" method="POST"><button type="submit">BORRAR</button></form><BR></BR> ';
         }
     }
 }
 
+
+
 // Verifica si la variable marc aesta rellena en el header
 if (isset($_GET['marca'])) {
     $ruta = 'coches.php?name=' . $name . '&marca=' . $marca;
+    $compra = 'comprar.php?name='.$name.'&marca='.$marca;
 } else {
     $ruta = 'marcas.php?name=' . $name;
+    $compra = 'comprar.php?name='.$name;
 }
 
+//buttonPHP('COMPRAR', $compra, 'POST');
 // Añade un botón volver, con la ruta señalizada antes y con el metodo post
 buttonPHP('VOLVER', $ruta, 'POST');

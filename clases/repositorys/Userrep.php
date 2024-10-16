@@ -16,16 +16,15 @@ class Userrep implements ICRUD
      */
     static public function getbyId($id)
     {
+        $user = '';
         $con = Connection::getConection();
-        $array = [];
-        $rest = $con->query('select nombre, correo, contraseña, apellidos from coches where id ="' . $id . '";');
+        $rest = $con->query('select nombre, correo, contraseña, apellidos from user where correo ="' . $id . '";');
         while ($row = $rest->fetch()) {
 
             $user = new User($row['nombre'], $row['apellidos'], $row['correo'], $row['contraseña']);
-            array_push($array, $user);
         }
 
-        return $array;
+        return $user;
     }
 
     /**
@@ -78,6 +77,6 @@ class Userrep implements ICRUD
         $con = Connection::getConection();
         $sql = 'update user set nombre=?, apellido=?, contraseña=? where correo=?';
         $stmt = $con->prepare($sql);
-        $stmt->execute($user->correo);
+        $stmt->execute($user->nombre, $user->apellido, $user->contraseña, $user->correo);
     }
 }

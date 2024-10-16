@@ -2,10 +2,10 @@
 
 $dr = $_SERVER['DOCUMENT_ROOT'];
 
-include_once 'logIn.php';
-
+include_once $dr . '/clases/helpers/logIn.php';
 include_once $dr . '/clases/repositorys/Userrep.php';
 include_once $dr . '/clases/helpers/Connection.php';
+include_once $dr . '/clases/models/User.php';
 
 iniciaSession();
 
@@ -13,6 +13,7 @@ iniciaSession();
 
 $datos = Userrep::getAll();
 
+static $user;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -27,15 +28,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Encriptación de contraseña
     $password = password_hash($pass, PASSWORD_DEFAULT);
 
+
+
     $datos = Userrep::getAll();
     if (array_search($email, array_column($datos, 'correo'))) {
-  
+
         echo 'Usuario ya creado <br>';
         // Verificamos si la contraseña es correcta
-        foreach ($datos as $element){
+        foreach ($datos as $element) {
             if (!password_verify($pass, $element->pass)) {
                 echo 'Contraseña incorrecta <br>';
             } else {
+
+                $user = Userrep::getbyId($email);
                 // Variable guarda el host
                 $host = $_SERVER['HTTP_HOST'];
                 // Ruta del servidor
@@ -43,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Archivo de la ruta
                 $html = 'marcas.php';
                 // Redirección al html
-                header("Location:../vista/marcas.php?name=" . $name);
+                header("Location:../vista/marcas.php?name=" . $user);
                 logIn($name);
                 if (!isset($_SESSION['carrito'])) {
                     $_SESSION['carrito'] = [];
@@ -57,4 +62,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
     echo 'ERROR: Se esperaba un metodo POST y se a recibido ' . $_SERVER['REQUEST_METHOD'];
 }
-
