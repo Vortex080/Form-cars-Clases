@@ -54,7 +54,9 @@ es el desarrollo de una "tienda de objetos" junto a un formulario de inicio de s
 > - Nombre: fisio Apellidos: fisio Correo: fisio@gmail.com Contraeña: 1234
 
 ## ESTRUCTURA DE ARCHIVOS
-![alt text](https://cdn.discordapp.com/attachments/1137333484919193653/1294979356795469949/image.png?ex=670cfb02&is=670ba982&hm=b18ef11f7c928a7ec2fed568d38a9d7029af7b99c38ac4bf8491bc38439f1382&)
+![alt text](https://cdn.discordapp.com/attachments/1137333484919193653/1296164190863622246/image.png?ex=67114a78&is=670ff8f8&hm=e82186d2d80fadb146fd2a5f50b845f2cf72edf3e4420b7f631f4cd7d80f68b0&)
+
+- Implementado __autoloader
 
 ## ESTRUCTURA BASE DE DATOS
 
