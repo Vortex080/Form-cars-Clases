@@ -1,103 +1,115 @@
-* {
-    font-family: 'Lato', sans-serif;
-}
-
+/* General */
 body {
-    background-color: grey;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
-    opacity: 0.99;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-article {
-    width: 100%;
-    height: auto;
+/* Contenedor principal centrado */
+.container {
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;  /* Centramos el texto y los elementos dentro del contenedor */
 }
 
-#register {
-    margin: 18px 20%;
-    background-color: rgba(235, 235, 205, 0.7);
-    padding: 5px 20%;
-    border-radius: 3px;
+/* Estilos para títulos */
+h1, h2 {
+    color: #4CAF50;
+    font-weight: bold;
 }
 
-form {
-    margin: 90px 20%;
-    background-color: rgba(235, 235, 205, 0.7);
-    padding: 20px 20%;
-    border-radius: 3px;
-}
-
-h1 {
-    text-align: center;
-    font-size: 2.1rem;
-}
-
-img {
-    width: 2rem;
-    height: auto;
-    margin: 5px 15px;
-    cursor: pointer;
-}
-
-input {
-    padding: 15px 10px;
-    margin: 5px 0px;
-    width: 100%;
-    color: #666;
-    border-radius: 1px;
-    border: 1px solid #ccc;
-}
-
-button[type="submit"] {
-    background-color: rgb(34, 139, 34);
-    padding: 8px 13px;
-    margin: 10px 0px;
-    color: white;
-    border-radius: 3px;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-button[type="submit"]:hover {
-    background-color: #57A639;
-}
-
-button[type="reset"] {
-    float: right;
-    background-color: #FFA420;
-    padding: 8px 13px;
-    margin: 10px 0px;
-    color: white;
-    border-radius: 3px;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-button[type="reset"]:hover {
-    background-color: #FF7514;
-}
-
-p {
-    text-align: center;
-    font-size: 1.2rem;
-    color: rgba(26, 24, 24, 0.692);
-}
-
+/* Enlaces centrados y con estilo */
 a {
-    color: rgba(7, 7, 248, 0.562);
-    cursor: pointer;
-    font-size: 1.1rem;
     text-decoration: none;
+    color: #4CAF50;
+    font-size: 18px;
+    margin: 10px 0;
+    display: block; /* Hace que los enlaces ocupen todo el ancho y se centren */
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    color: rgba(11, 11, 190, 0.562);
+    color: #2e7031;
 }
 
-a:focus {
-    color: rgba(3, 3, 85, 0.466);
+/* Botones centrados */
+button, .btn {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px 5px;
+}
+
+button:hover, .btn:hover {
+    background-color: #45a049;
+}
+
+button:focus, .btn:focus {
+    outline: none;
+}
+
+/* Estilos para formularios */
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Botón de envío */
+input[type="submit"], input[type="button"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #45a049;
+}
+
+input[type="submit"]:focus, input[type="button"]:focus {
+    outline: none;
+}
+
+/* Estilo adicional para la disposición de formularios */
+form {
+    margin-top: 20px;
+    text-align: left;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
 }

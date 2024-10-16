@@ -1,12 +1,5 @@
 <?php
 
-$dr = $_SERVER['DOCUMENT_ROOT'];
-
-include_once $dr . '/clases/models/User.php';
-include_once $dr . '/clases/helpers/Connection.php';
-include_once $dr . '/clases/repositorys/CRUDRep.php';
-
-
 class Userrep implements ICRUD
 {
 

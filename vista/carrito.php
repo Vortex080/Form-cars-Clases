@@ -2,19 +2,16 @@
 
 $dr = $_SERVER['DOCUMENT_ROOT'];
 
-include_once $dr . '/clases/models/User.php';
-include_once $dr . '/clases/repositorys/Userrep.php';
-include_once $dr . '/clases/repositorys/Carrep.php';
-include_once $dr . '/clases/helpers/logIn.php';
-include_once $dr . '/clases/helpers/printer.php';
+include_once $dr . '/_autoload.php';
 
-iniciaSession();
+LogIn::iniciaSession();
 
 // Verifica si en el header existe la variable coche
 if (isset($_GET['coche'])) {
     // Recoge la variable del header
     $quitar = $_GET['coche'];
 }
+
 
 // Recoge el nombre de la sessión del header
 $name = $_GET['name'];
@@ -36,7 +33,6 @@ if (!empty($quitar)) {
     unset($modelos[$i]);
     $_SESSION['carrito'] = $modelos;
 }
-
 foreach ($modelos as $model) {
     // Verifica si la marca existe para redireccionar hacia una pagina u otra
     if (isset($_GET['marca'])) {
@@ -55,12 +51,12 @@ foreach ($modelos as $model) {
 // Verifica si la variable marc aesta rellena en el header
 if (isset($_GET['marca'])) {
     $ruta = 'coches.php?name=' . $name . '&marca=' . $marca;
-    $compra = 'comprar.php?name='.$name.'&marca='.$marca;
+    $compra = 'comprar.php?name=' . $name . '&marca=' . $marca;
 } else {
     $ruta = 'marcas.php?name=' . $name;
-    $compra = 'comprar.php?name='.$name;
+    $compra = 'comprar.php?name=' . $name;
 }
 
 //buttonPHP('COMPRAR', $compra, 'POST');
 // Añade un botón volver, con la ruta señalizada antes y con el metodo post
-buttonPHP('VOLVER', $ruta, 'POST');
+Printer::buttonPHP('VOLVER', $ruta, 'POST');

@@ -1,6 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
 
+include_once '_autoload.php';
+
+LogIn::iniciaSession();
+echo '
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +21,7 @@
     <main>
         <article>
             <section>
-                <form action="clases/helpers/auth.php" method="POST">
+                <form action="/vista/auth.php" method="POST">
                     <h1>Inicia Sesion</h1>
 
                     <input type="text" name="name" placeholder="Nombre"><br />
@@ -31,6 +34,4 @@
             </section>
         </article>
     </main>
-</body>
-
-</html>
+</body>';

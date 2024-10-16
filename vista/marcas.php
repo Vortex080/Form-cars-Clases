@@ -2,27 +2,27 @@
 
 $dr = $_SERVER['DOCUMENT_ROOT'];
 
-include_once $dr . '/clases/helpers/logIn.php';
-include_once $dr . '/clases/helpers/printer.php';
-include_once $dr . '/clases/repositorys/Brandrep.php';
+include_once $dr . '/_autoload.php';
 
-iniciaSession();
+LogIn::iniciaSession();
 
 // Recoge el nombre de la sesión
 $name = $_GET['name'];
 
+Printer::formato();
+
 // Recoge todas las marcas de la BD
-$contenido = Branchrep::getAll();
+$contenido = Brandrep::getAll();
 
 // Escribe el titulo de la marca
-title('MARCAS');
-
+Printer::title('MARCAS');
+echo '<div id="container">';
 foreach ($contenido as $element) {
     echo '<a href="coches.php?name=' . $name . '&marca=' . $element->name . '">' . $element->name . '</a> <br>';
 }
-
+echo '<div>';
 // Añade el botón VER CARRITO
-buttonPHP('VER CARRITO', 'carrito.php?name=' . $name, 'POST');
+Printer::buttonPHP('VER CARRITO', 'carrito.php?name=' . $name, 'POST');
 
 // Añade el botón LOGOUT
-buttonPHP('LOGOUT', $dr . '/clases/helpers/logOut.php?name=' . $name, 'POST');
+Printer::buttonPHP('LOGOUT', $dr . '/clases/helpers/logOut.php?name=' . $name, 'POST');

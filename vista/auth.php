@@ -2,12 +2,9 @@
 
 $dr = $_SERVER['DOCUMENT_ROOT'];
 
-include_once $dr . '/clases/helpers/logIn.php';
-include_once $dr . '/clases/repositorys/Userrep.php';
-include_once $dr . '/clases/helpers/Connection.php';
-include_once $dr . '/clases/models/User.php';
+include_once $dr . '/_autoload.php';
 
-iniciaSession();
+LogIn::iniciaSession();
 
 // Array de datos
 
@@ -48,8 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Archivo de la ruta
                 $html = 'marcas.php';
                 // Redirección al html
-                header("Location:../vista/marcas.php?name=" . $user);
-                logIn($name);
+                header("Location:/vista/marcas.php?name=" . $user);
+                $_SESSION['carrito'];
                 if (!isset($_SESSION['carrito'])) {
                     $_SESSION['carrito'] = [];
                 }

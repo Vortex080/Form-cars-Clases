@@ -1,8 +1,4 @@
 <?php
-$dr = $_SERVER['DOCUMENT_ROOT'];
-
-include_once $dr . '/clases/repositorys/CRUDRep.php';
-include_once $dr . '/clases/models/Car.php';
 
 /**
  * Car repository class
@@ -38,7 +34,6 @@ class Carrep implements ICRUD
         $array = [];
         $rest = $con->query('select id, nombre, marca from coches;');
         while ($row = $rest->fetch()) {
-
             $car = new car($row['id'], $row['nombre'], $row['id']);
             array_push($array, $car);
         }
@@ -86,16 +81,18 @@ class Carrep implements ICRUD
      * Busca el coche por la marca
      * @var $brand
      */
-    static public function findbyBrand($brand)
+    static public function findbyAllBrand($brand)
     {
         $con = Connection::getConection();
+        $array = [];
         $rest = $con->query('select id, nombre, marca from coches where marca ="' . $brand . '";');
         while ($row = $rest->fetch()) {
 
-            $car = new Car($row['id'], $row['marca'], $row['nombre']);
+            $car = new car($row['id'], $row['marca'], $row['nombre']);
+            array_push($array, $car);
         }
 
-        return $car;
+        return $array;
     }
 
     /**
@@ -105,12 +102,14 @@ class Carrep implements ICRUD
     static public function getbyName($name)
     {
         $con = Connection::getConection();
+        $array = [];
         $rest = $con->query('select id, nombre, marca from coches where nombre ="' . $name . '";');
         while ($row = $rest->fetch()) {
 
             $car = new Car($row['id'], $row['marca'], $row['nombre']);
+            array_push($array, $car);
         }
 
-        return $car;
+        return $array;
     }
 }

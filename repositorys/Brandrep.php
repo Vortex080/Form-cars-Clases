@@ -1,12 +1,6 @@
 <?php
 
-$dr = $_SERVER['DOCUMENT_ROOT'];
-
-include_once $dr . '/clases/repositorys/CRUDRep.php';
-include_once $dr . '/clases/models/Branch.php';
-include_once $dr . '/clases/helpers/Connection.php';
-
-class Branchrep implements ICRUD
+class Brandrep implements ICRUD
 {
     /**
      * Saca por id del array
@@ -26,8 +20,9 @@ class Branchrep implements ICRUD
         return $array;
     }
 
+
     /**
-     * Saca el array entero
+     * getAll
      */
     static public function getAll()
     {
@@ -43,9 +38,12 @@ class Branchrep implements ICRUD
         return $array;
     }
 
+
     /**
-     * Añade el marca al array list
-     * @var $brand
+     * create
+     *
+     * @param  mixed $brand
+     * @return void
      */
     static public function create($brand)
     {
@@ -55,9 +53,12 @@ class Branchrep implements ICRUD
         $stmt->execute([$brand->id, $brand->name]);
     }
 
+
     /**
-     * Elimina el marca del array
-     * @var $brand
+     * delete
+     *
+     * @param  mixed $brand
+     * @return void
      */
     static public function delete($brand)
     {
@@ -67,9 +68,12 @@ class Branchrep implements ICRUD
         $stmt->execute([$brand->id]);
     }
 
+
     /**
-     * Actualiza los campos de marca
-     * @var $brand
+     * update
+     *
+     * @param  mixed $brand
+     * @return void
      */
     static public function update($brand)
     {
